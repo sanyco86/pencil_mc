@@ -1,0 +1,20 @@
+<%# locals: (live_station:, live_station_counter: nil, live_station_iteration: nil) -%>
+<div class="album">
+  <div class="album--content">
+    <div class="album--cover">
+      <div class="album--controls-container">
+        <%= link_to params.to_unsafe_h.merge(station_id: live_station.id), class: "album--controls" do %>
+          <span class="album--play">
+            <%= render "icons/play" %>
+          </span>
+        <% end %>
+      </div>
+      <div class="album--image">
+        <% if live_station.cover.attached? %>
+          <%= image_tag live_station.cover %>
+        <% end %>
+      </div>
+    </div>
+    <span class="album--title"><%= live_station.name %></span>
+  </div>
+</div>

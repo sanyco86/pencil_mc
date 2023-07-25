@@ -1,0 +1,33 @@
+<%# locals: () -%>
+<nav class="nav">
+  <%= link_to root_path, class: "nav--left" do %>
+    <div class="nav--logo"></div>
+    <h1 class="nav--title">Pencil MC</h1>
+  <% end %>
+  <div class="nav--mid">
+    <%- if current_user -%>
+      <%= link_to "Home", root_path, class: "nav--menu" %>
+      <%= link_to live_station_path, class: "nav--menu" do %>
+        <span>My Station</span>
+        <% if current_user.live_station&.live? %>
+          <span class="track--playing-indicator"></span>
+        <% end %>
+      <% end %>
+    <%- end -%>
+    <%= form_with(url: search_path, method: :get, class: "nav--search") do |f| %>
+      <div class="nav--search--icon">
+        <%= render "icons/search" %>
+      </div>
+      <%= f.search_field :q, value: params[:q], class: "nav--search--input" %>
+    <% end %>
+  </div>
+  <div class="nav--right">
+    <%- if current_user -%>
+      <span class="nav--username"><%= User::PREFIX + current_user.username %></span>
+      <%= button_to "Sign out", sign_out_path, method: :delete, class: "nav--btn--outlined ml-2" %>
+    <%- else- %>
+      <%= link_to "Sign up", sign_up_path, class: "nav--btn--outlined" %>
+      <%= link_to "Log in", sign_in_path, class: "nav--btn ml-2" %>
+    <%- end -%>
+  </div>
+</nav>

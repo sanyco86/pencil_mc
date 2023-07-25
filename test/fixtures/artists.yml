@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+nirvana:
+  name: Nirvana
+  bio: >
+    A mulato, an albino, a mosquito
+  tags:
+    - punk
+    - grunge
+    - seattle
+    - rock
+  albums_count: 3
+  tracks_count: 6
+
+metallica:
+  name: Metallica
+  bio: >
+    Masters of puppets
+  tags:
+    - heavy-metal
+    - trash-metal
+    - rock
+  albums_count: 1
+  tracks_count: 2
+
+beatles:
+  name: The Beatles
+  bio: >
+    Four handsome guys from Liverpool
+  tags:
+    - rock-n-roll
+  albums_count: 4
+  tracks_count: 9

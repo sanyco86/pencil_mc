@@ -1,0 +1,21 @@
+<%- content_for :content do %>
+  <%= render partial: "shared/nav" %>
+
+  <div class="main">
+    <%= yield %>
+  </div>
+
+  <aside id="aside" class="aside">
+    <%- if current_album %>
+      <%= render partial: "albums/aside", locals: {album: current_album} %>
+    <% end %>
+  </aside>
+
+  <%- if current_station %>
+    <%= render partial: "shared/player", locals: {station: current_station, track: current_station.current_track} %>
+  <%- elsif current_track -%>
+    <%= render partial: "shared/player", locals: {track: current_track} %>
+  <%- end %>
+<%- end -%>
+
+<%= render template: "layouts/core" %>

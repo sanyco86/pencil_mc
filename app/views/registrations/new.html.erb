@@ -1,0 +1,29 @@
+<div class="h-full w-full min-h-screen t-0 absolute bg-primary">
+  <div class="login-form mt-20">
+    <div class="login-form--back">
+    </div>
+    <div class="login-form--content">
+      <div class="login-form--logo">
+      </div>
+      <h2 class="text-header-2 text-center">Welcome back!</h2>
+      <%= form_with(url: sign_up_path) do |f| %>
+        <% if @user.errors.any? %>
+          <div>
+            <ul>
+              <% @user.errors.each do |error| %>
+                <li class="text-secondary text-xsmall"><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= f.text_field :username, value: @user.username, require: true, autofocus: true, autocomplete: "username", class: "input mt-2", placeholder: "Username" %>
+        <%= f.password_field :password, required: true, autocomplete: "new-password", class: "input mt-2", placeholder: "Password" %>
+         <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "input mt-2", placeholder: "Confirmation" %>
+        <div class="flex flex-row justify-between items-baseline">
+          <%= f.submit "Sign up", class: "button button-primary mt-2" %>
+          <%= link_to "Log in", sign_in_path, class: "text-small opacity-50 hover:opacity-100" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

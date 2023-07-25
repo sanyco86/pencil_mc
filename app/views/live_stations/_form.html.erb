@@ -1,0 +1,16 @@
+<%= form_for @station, url: live_station_path, html: {class: "artist-header"} do |f| %>
+  <div class="artist-image">
+    <% if @station.cover.attached? %>
+      <%= image_tag @station.cover %>
+    <% end %>
+  </div>
+  <div class="artist-info">
+    <div class="flex items-center">
+      <%= f.text_field :name, class: "input text-header-2 w-auto" %>
+      <%= f.button type: :submit, class: "icon-btn ml-2" do %>
+        <%= render "icons/check" %>
+      <% end %>
+    </div>
+    <%= f.file_field :cover, class: "mt-2 inline cursor-pointer text-xsmall file:bg-white file:border-0 file:text-xsmall file:text-secondary hover:file:text-black file:cursor-pointer" %>
+  </div>
+<% end %>

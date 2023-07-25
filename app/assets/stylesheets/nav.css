@@ -1,0 +1,60 @@
+
+.nav {
+  @apply bg-primary w-full flex items-center justify-between top-0 h-[70px] shadow-md sticky z-30;
+}
+
+.nav--left {
+  @apply ml-4 flex flex-grow-0 items-center;
+}
+
+.nav--right {
+  @apply mx-4 flex flex-row items-center;
+}
+
+.nav--search {
+  @apply relative;
+}
+
+.nav--search--icon {
+  @apply absolute z-[2] inset-y-4 left-0 flex items-center pl-2 pointer-events-none text-black;
+}
+
+.nav--search--icon:has(+ .nav--search--input:focus) {
+  @apply text-secondary;
+}
+
+
+.nav--search--input {
+  @apply pl-10 p-1 w-full rounded border-none bg-opacity-0 bg-white transition-colors focus:bg-opacity-90 focus:border focus:border-gray-300 focus:outline-none outline-offset-0 !important;
+}
+
+.nav--logo {
+  @apply flex h-full items-center self-start;
+  background: url("/assets/logo.png") no-repeat;
+  background-size: contain;
+  padding: 30px 30px;
+}
+
+.nav--title {
+  @apply self-center ml-2 font-extralight text-header-3 underline decoration-wavy decoration-2;
+}
+
+.nav--mid {
+  @apply ml-4 flex items-center flex-grow max-w-md justify-center;
+}
+
+.nav--menu {
+  @apply text-plain font-extralight mx-4 hover:underline hover:decoration-wavy hover:decoration-secondary whitespace-nowrap;
+}
+
+.nav--btn {
+  @apply font-bold text-xsmall bg-secondary text-white px-2 py-1 rounded-md hover:opacity-100 hover:bg-opacity-75;
+}
+
+.nav--btn--outlined {
+  @apply font-bold text-xsmall opacity-50 hover:opacity-100;
+}
+
+.nav--username {
+  @apply text-plain;
+}

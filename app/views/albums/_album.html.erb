@@ -1,0 +1,21 @@
+<%# locals: (album:, album_counter: nil, album_iteration: nil) -%>
+<div class="album">
+  <div class="album--content">
+    <div class="album--cover">
+      <div class="album--controls-container">
+        <%= link_to params.to_unsafe_h.merge(album_id: album.id), class: "album--controls" do %>
+          <span class="album--play">
+            <%= render "icons/play" %>
+          </span>
+        <% end %>
+      </div>
+      <div class="album--image">
+        <% if album.cover.attached? %>
+          <%= image_tag album.cover %>
+        <% end %>
+      </div>
+    </div>
+    <%= link_to album.title, album_path(album), class: "album--title" %>
+    <%= link_to album.artist.name, artist_path(album.artist), class: "album--author" %>
+  </div>
+</div>
