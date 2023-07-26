@@ -1,31 +1,31 @@
 <%# locals: (track:, station: nil) -%>
-<div class="player" id="player">
+<div class="player" id="<%= dom_id(station || track, "player_#{track.id}") %>" data-turbo-permanent>
   <% if track %>
     <div class="player--timeline">
       <div class="player--timeline-progress" style="width:11%;"></div>
     </div>
   <% end %>
   <% unless station %>
-  <div class="player--controls">
+    <div class="player--controls">
     <span class="player-btn">
       <%= render "icons/play" %>
     </span>
-  </div>
+    </div>
   <% end %>
   <div class="player--track">
     <% if station %>
-    <div class="player--radio">
-      <%= render "icons/radio" %>
-      <span class="player--author ml-2">
+      <div class="player--radio">
+        <%= render "icons/radio" %>
+        <span class="player--author ml-2">
         <%= station.name%>
       </span>
-    </div>
+      </div>
     <% end %>
     <% if track %>
       <% if track.album.cover.attached? %>
-      <div class="player--cover">
-        <%= image_tag track.album.cover %>
-      </div>
+        <div class="player--cover">
+          <%= image_tag track.album.cover %>
+        </div>
       <% end %>
       <div class="player--info">
         <span class="player--title">
@@ -42,18 +42,18 @@
       <span><%= seconds_to_duration(track.duration) %></span>
     </div>
     <script>
-      (() => {
-        let currentTime = 0;
-        const el = document.querySelector(".player--current-time");
-        setInterval(() => {
-          currentTime += 1;
-          let mins = Math.floor(currentTime / 60);
-          let secs = currentTime % 60;
-          if (mins < 10) mins = "0" + mins;
-          if (secs < 10) secs = "0" + secs;
-          el.innerHTML = `${mins}:${secs}`;
-        }, 1000)
-      })();
+        (() => {
+            let currentTime = 0;
+            const el = document.querySelector(".player--current-time");
+            setInterval(() => {
+                currentTime += 1;
+                let mins = Math.floor(currentTime / 60);
+                let secs = currentTime % 60;
+                if (mins < 10) mins = "0" + mins;
+                if (secs < 10) secs = "0" + secs;
+                el.innerHTML = `${mins}:${secs}`;
+            }, 1000)
+        })();
     </script>
   <% end %>
 </div>
